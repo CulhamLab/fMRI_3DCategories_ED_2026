@@ -24,7 +24,7 @@ end
 % type = 'PILOT';
 % switch type
 %     case 'PILOT'
-        p.DURATION.IMAGE_PRESENTATION_SECONDS = 4;
+        p.DURATION.IMAGE_PRESENTATION_SECONDS = 1;
 %         p.SCREEN.BACKGROUND_COLOUR = [0 0 0];
 %         p.SCREEN.TEXT_COLOUR = [255 255 255];
         p.SCREEN.BACKGROUND_COLOUR = [128 128 128];
