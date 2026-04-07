@@ -15,10 +15,6 @@ Screen('Preference', 'SkipSyncTests', 1);
 PsychDefaultSetup(2);
 
 
-%% Check PsychToolbox
-AssertOpenGL();
-
-
 %% Inputs and Type-Specific Parameters
 if ~exist('run','var')
     error(sprintf('%s\nToo few inputs!',help(mfilename)))
