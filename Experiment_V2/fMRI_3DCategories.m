@@ -31,8 +31,8 @@
 % 
 function fMRI_3DCategories(participant_number, run_number)
 arguments
-    participant_number  (1,1) {mustBePositive, mustBeInteger} = 1
-    run_number          (1,1) {mustBePositive, mustBeInteger} = 1
+    participant_number  (1,1) {mustBePositive, mustBeInteger}
+    run_number          (1,1) {mustBePositive, mustBeInteger}
 end
 
 
