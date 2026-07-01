@@ -50,7 +50,7 @@ p.FIXATION.SIZE =            [30 30];           % fixation is resized to [height
 p.FIXATION.TRANSPARENCY_CUTOFF = 240;           % threshold for removing fixation image's background, 0-255
 
 p.FIXATION.SHIFT_X =               0;           % moves fixation position, in pixels, positive is rightward
-p.FIXATION.SHIFT_Y =            -115;           % moves fixation position, in pixels, positive is downward
+p.FIXATION.SHIFT_Y =            103;           % moves fixation position, in pixels, positive is downward
 
 
 %% Images
