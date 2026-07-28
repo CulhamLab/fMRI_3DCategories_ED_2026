@@ -55,6 +55,8 @@ vars = ["Volume"                "double"        % volume in run
         "Received_Trigger"      "double"        % 1 if the trigger was received at end of this volume
         "Button_Box_Pressed"    "double"        % 1 if any button on the box was pressed during this volume
         "Button_Box_Time"       "double"        % time of first button press relative to Time_Start
+        "Time_Image_Updated"    "double"        % time of the second frame queue, at which point the first frame is now on screen
+        "Time_Image_Removed"    "double"        % if (p.TIMING.IMAGE_PRESENTATION < p.TIMING.TR), then this is when the image is no longer on the screen
         ];
 
 % initialize table

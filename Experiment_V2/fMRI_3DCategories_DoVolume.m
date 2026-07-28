@@ -56,6 +56,10 @@ need_to_clear_image = ~ismissing(d.schedule.Condition(vol)) && (p.TIMING.IMAGE_P
 
 %% Run Volunme
 
+% initialize checks for image changes
+countdown_is_on_screen_initial_state = 2;
+countdown_is_on_screen_image_removed = 0;
+
 % Loop until trigger is received or timeout
 while 1
     % Time in this volume (using the effective start time)
@@ -82,10 +86,27 @@ while 1
     if need_to_clear_image && (time_in_vol >= p.TIMING.IMAGE_PRESENTATION)
         s = fMRI_3DCategories_PrepareVolumeFrame(p, s, 0, 0);
         need_to_clear_image = false;
+        countdown_is_on_screen_image_removed = 2;
     end
 
     % Queue next frame?
     if Screen('AsyncFlipCheckEnd', s.win)
+        % store time when queuing the SECOND frame, this is when volume's first frame is on screen
+        if countdown_is_on_screen_initial_state > 0
+            countdown_is_on_screen_initial_state = countdown_is_on_screen_initial_state - 1;
+            if ~countdown_is_on_screen_initial_state
+                d.schedule.Time_Image_Updated(vol) = time_in_vol;
+            end
+        end
+
+        % store time when queuing the SECOND frame after removing the image, this is when image is no longer on screen
+        if countdown_is_on_screen_image_removed > 0
+            countdown_is_on_screen_image_removed = countdown_is_on_screen_image_removed - 1;
+            if ~countdown_is_on_screen_image_removed
+                d.schedule.Time_Image_Removed(vol) = time_in_vol;
+            end
+        end
+
         s.current.is_left = fMRI_3DCategories_QueueNextFrame(s);
     end
 
